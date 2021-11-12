@@ -20,12 +20,14 @@ import {
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useAuth from '../../hooks/useAuth';
 import AddProduct from './AddProduct/AddProduct';
+import { Button } from '@mui/material';
+import MyOrders from './MyOrders/MyOrders';
 
 const drawerWidth = 180;
 
 function ResponsiveDrawer(props) {
     let { path, url } = useRouteMatch();
-    const { isAdmin } = useAuth();
+    const { isAdmin, logout } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -40,6 +42,12 @@ function ResponsiveDrawer(props) {
             {isAdmin && <Box>
                 <Link to={`${url}/makeAdmin`}>Make admin</Link> <br />
                 <Link to={`${url}/addProduct`}>Add Product</Link>
+            </Box>}
+            {!isAdmin && <Box>
+                <Link to={`${url}/pay`}>pay</Link> <br />
+                <Link to={`${url}/myOrders`}>My Orders</Link><br />
+                <Link to={`${url}/review`}>Review</Link><br />
+                <Button onClick={logout}>logout</Button>
             </Box>}
 
         </div>
@@ -121,6 +129,15 @@ function ResponsiveDrawer(props) {
                     </Route>
                     <Route path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
+                    </Route>
+                    <Route path={`${path}/pay`}>
+                        <h2>Payment Coming soon</h2>
+                    </Route>
+                    <Route path={`${path}/myOrders`}>
+                        <MyOrders></MyOrders>
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <h2>review your order</h2>
                     </Route>
                 </Switch>
             </Box>

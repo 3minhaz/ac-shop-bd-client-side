@@ -5,7 +5,7 @@ const AddProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         const product = data;
-        fetch('http://localhost:5000/addProduct', {
+        fetch('https://aqueous-citadel-84780.herokuapp.com/addProduct', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(product)
@@ -22,7 +22,7 @@ const AddProduct = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
-                <input placeholder='name' {...register("product-name")} /> <br />
+                <input placeholder='name' {...register("productName")} /> <br />
                 <input placeholder='description' {...register("description")} /> <br />
                 <input placeholder='image-Link' {...register("image")} /> <br />
                 <input type="number" placeholder='price' {...register("price")} /> <br />

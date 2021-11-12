@@ -7,7 +7,7 @@ const auth = getAuth();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
 
     const registerWithEmail = (name, email, password, location, history) => {
@@ -77,13 +77,13 @@ const useFirebase = () => {
                 // User is signed out
                 // ...
             }
-            return () => unsubscribe;
+            setIsLoading(false);
         })
-        setIsLoading(false);
+        return () => unsubscribe;
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://aqueous-citadel-84780.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setIsAdmin(data.admin))
     }, [user.email])
@@ -91,7 +91,7 @@ const useFirebase = () => {
     const addUser = (email, name) => {
         const user = { email, displayName: name };
         console.log(user);
-        fetch('http://localhost:5000/users', {
+        fetch('https://aqueous-citadel-84780.herokuapp.com/users', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(user)

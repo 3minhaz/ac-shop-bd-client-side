@@ -6,7 +6,7 @@ const MakeAdmin = () => {
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const onSubmit = (data, e) => {
         e.preventDefault();
-        fetch('http://localhost:5000/users', {
+        fetch('https://aqueous-citadel-84780.herokuapp.com/users', {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: data.email })

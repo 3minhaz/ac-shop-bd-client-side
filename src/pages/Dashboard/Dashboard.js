@@ -22,6 +22,9 @@ import useAuth from '../../hooks/useAuth';
 import AddProduct from './AddProduct/AddProduct';
 import { Button } from '@mui/material';
 import MyOrders from './MyOrders/MyOrders';
+import ReviewOrder from './ReviewOrder/ReviewOrder';
+import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
+import ManageProducts from './ManageProducts/ManageProducts';
 
 const drawerWidth = 180;
 
@@ -41,7 +44,9 @@ function ResponsiveDrawer(props) {
             <Divider />
             {isAdmin && <Box>
                 <Link to={`${url}/makeAdmin`}>Make admin</Link> <br />
-                <Link to={`${url}/addProduct`}>Add Product</Link>
+                <Link to={`${url}/addProduct`}>Add Product</Link> <br />
+                <Link to={`${url}/manageAllOrders`}>Manage All Orders</Link> <br />
+                <Link to={`${url}/manageProducts`}>Manage Products</Link> <br />
             </Box>}
             {!isAdmin && <Box>
                 <Link to={`${url}/pay`}>pay</Link> <br />
@@ -130,6 +135,12 @@ function ResponsiveDrawer(props) {
                     <Route path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
                     </Route>
+                    <Route path={`${path}/manageAllOrders`}>
+                        <ManageAllOrders></ManageAllOrders>
+                    </Route>
+                    <Route path={`${path}/manageProducts`}>
+                        <ManageProducts></ManageProducts>
+                    </Route>
                     <Route path={`${path}/pay`}>
                         <h2>Payment Coming soon</h2>
                     </Route>
@@ -137,7 +148,7 @@ function ResponsiveDrawer(props) {
                         <MyOrders></MyOrders>
                     </Route>
                     <Route path={`${path}/review`}>
-                        <h2>review your order</h2>
+                        <ReviewOrder></ReviewOrder>
                     </Route>
                 </Switch>
             </Box>

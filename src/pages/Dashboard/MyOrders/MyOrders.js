@@ -8,7 +8,7 @@ const MyOrders = () => {
     const { user } = useAuth();
     const [isDelete, setIsDelete] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://aqueous-citadel-84780.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [isDelete])
@@ -16,7 +16,7 @@ const MyOrders = () => {
     const handleDeleteOrder = id => {
         const proceed = window.confirm('are you sure ,you want to delete the items');
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
@@ -45,7 +45,7 @@ const MyOrders = () => {
                         >
                             <img width="50%" src={order.product.image} alt="" />
                             <Typography variant='h5'>
-                                hard coded
+                                {order.status}
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'left' }} variant='h3'>

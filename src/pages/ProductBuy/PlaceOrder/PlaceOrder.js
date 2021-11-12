@@ -13,7 +13,7 @@ const PlaceOrder = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/placeOrder/${id}`)
+        fetch(`https://aqueous-citadel-84780.herokuapp.com/placeOrder/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
@@ -22,7 +22,7 @@ const PlaceOrder = () => {
         data.product = product;
         data.status = 'pending';
         console.log(data);
-        fetch('http://localhost:5000/placeOrder', {
+        fetch('https://aqueous-citadel-84780.herokuapp.com/placeOrder', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)

@@ -1,5 +1,4 @@
 import { Button, CircularProgress, Container, Grid, Paper } from '@mui/material';
-import { Box } from '@mui/system';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -22,9 +21,8 @@ const Products = () => {
         history.push(`/placeOrder/${id}`)
     }
     return (
-
         <Container>
-            <h2 style={{ fontSize: 40, color: 'orange' }}>Our Products</h2>
+            <h2 style={{ fontSize: 40, color: 'orange', marginBottom: '20px' }}>Our Products</h2>
             {isLoading && <CircularProgress />}
             <Grid sx={{ my: 2 }} container spacing={4}>
                 {

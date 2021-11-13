@@ -16,17 +16,21 @@ const ManageProducts = () => {
     }, [isDeleted])
     console.log(products);
     const handleProductDelete = id => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/products?id=${id}`, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount) {
-                    alert('successfully deleted');
-                    setIsDeleted(true);
-
-                }
+        const proceed = window.confirm('are you sure you want to delete the product');
+        if (proceed) {
+            fetch(`https://aqueous-citadel-84780.herokuapp.com/products?id=${id}`, {
+                method: 'DELETE',
+                headers: { 'content-type': 'application/json' }
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        alert('successfully deleted');
+                        setIsDeleted(true);
+
+                    }
+                })
+        }
     }
     return (
         <div>

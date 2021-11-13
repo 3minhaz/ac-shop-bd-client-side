@@ -4,20 +4,14 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import { Link } from "react-router-dom"
 import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 180;
 
 const Navigation = (props) => {
-    const { user, logout } = useAuth();
+    const { user, logout, isAdmin } = useAuth();
     const { window } = props;
     const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -25,44 +19,20 @@ const Navigation = (props) => {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    // const nav = (
-    //     <div>
-    //         <Link style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Dashboard</Link>
-    //         <Link style={{ textDecoration: 'none', color: 'white' }}>Login</Link>
-    //     </div>
-    // )
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar sx={{ backgroundColor: 'Navy', }} position="static">
+            <AppBar sx={{ backgroundColor: 'darkCyan', }} position="static">
                 <Toolbar>
-                    {/* <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
 
-                        onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
-                    >
-                        <MenuIcon />
-                    </IconButton> */}
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         AC SHOP BD
                     </Typography>
-                    {/* <Drawer
-                        variant="permanent"
-                        container={container}
-                        sx={{
-                            display: { xs: 'none', sm: 'block' },
-                            '& .MuiDrawer-paper': { boxSizing: 'border-box', },
-                        }}
-                </Drawer>
-                    > */}
-                    <Link to='/explore' style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Explore</Link> <br />
+                    <Link to='/home' style={{ textDecoration: 'none', color: 'white', margin: 5 }}>Home</Link> <br />
+                    <Link to='/explore' style={{ textDecoration: 'none', color: 'white', margin: 5 }}>Explore</Link>
                     {
                         user.email ? <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <Link to='/dashboard' style={{ textDecoration: 'none', color: 'white', margin: 10 }}>Dashboard</Link> <br />
-                            <p style={{ marginRight: '8px' }}> {user.displayName}</p>
+                            <Link to='/dashboard' style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Dashboard</Link> <br />
                             <Button onClick={logout} variant="contained">logout</Button>
                         </div> :
                             <Link to='/login' style={{ textDecoration: 'none', color: 'white' }}>Login</Link>
@@ -83,8 +53,6 @@ const Navigation = (props) => {
                     >
                         {
                             <Box sx={{ m: 2 }}>
-                                {/* <Link style={{ textDecoration: 'none', color: 'black' }}>Dashboard</Link> <br />
-                                <Link style={{ textDecoration: 'none', color: 'black' }}>Login</Link> */}
                             </Box>
                         }
                     </Drawer>

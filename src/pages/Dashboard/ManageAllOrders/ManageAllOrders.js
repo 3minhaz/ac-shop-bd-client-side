@@ -29,16 +29,19 @@ const ManageAllOrders = () => {
     }
 
     const handleDelete = id => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount) {
-                    alert('order deleted successfully')
-                    setIsShipped(true);
-                }
+        const proceed = window.confirm('are you sure,you want to delete the items');
+        if (proceed) {
+            fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        alert('order deleted successfully')
+                        setIsShipped(true);
+                    }
+                })
+        }
     }
     return (
         <div>

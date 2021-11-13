@@ -3,8 +3,26 @@
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
     padding-top: 60px;
 }
-/* 
-style={{ backgroundImage: `url(${img})`, height: '100vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
-*/
+/*  fontSize: 80, */
+.custom-color{
+    font-size: 40px;
+}
+.custom-color2{
+    font-size: 80px;
+}
+
+@media only screen and (max-width: 600px){
+    .bg-img{         
+        background-size: auto;
+        height: auto;
+    }
+    .custom-color{
+        font-size: 25px;
+    }
+    .custom-color2{
+        font-size: 45px;
+    }
+}

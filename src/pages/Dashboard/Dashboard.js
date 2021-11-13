@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { positions } from '@mui/system';
 import {
     BrowserRouter as Router,
     Switch,
@@ -26,6 +25,8 @@ import MyOrders from './MyOrders/MyOrders';
 import ReviewOrder from './ReviewOrder/ReviewOrder';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
+import AdminRoute from '../Shared/Login/AdminRoute/AdminRoute';
+import PrivateRoute from '../Shared/Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 180;
 
@@ -43,21 +44,21 @@ function ResponsiveDrawer(props) {
         <div>
             <Toolbar />
             <Divider />
-            {isAdmin && <Box>
-                <Link style={{ textDecoration: 'none' }} to={`/home`}>home</Link> <br />
+            {isAdmin ? <Box>
+                <Link style={{ textDecoration: 'none' }} to={`/home`}>Home</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`}>Make admin</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`}>Add Product</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/manageAllOrders`}>Manage All Orders</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/manageProducts`}>Manage Products</Link> <br />
-                <Button onClick={logout}>logout</Button>
-            </Box>}
-            {!isAdmin && <Box>
-                <Link style={{ textDecoration: 'none' }} to={`/home`}>home</Link> <br />
-                <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}>pay</Link> <br />
+                <Button onClick={logout}>Logout</Button>
+            </Box> : <Box>
+                <Link style={{ textDecoration: 'none' }} to={`/home`}>Home</Link> <br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}>Pay</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/myOrders`}>My Orders</Link><br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/review`}>Review</Link><br />
                 <Button onClick={logout}>logout</Button>
             </Box>}
+            {/* {!isAdmin && } */}
 
         </div>
     );
@@ -127,25 +128,25 @@ function ResponsiveDrawer(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                {/* <Typography paragraph>
-                    sapien faucibus et molestie ac.
-                </Typography> */}
+                <Typography variant="h3">
+                    Welcome to Dashboard
+                    <br />
+
+                </Typography>
                 <Switch>
-                    {/* <Route exact path={path}>
-                        <h3>Please select a topic.</h3>
-                    </Route> */}
-                    <Route path={`${path}/makeAdmin`}>
+
+                    <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    <Route path={`${path}/addProduct`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
-                    </Route>
-                    <Route path={`${path}/manageAllOrders`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageAllOrders`}>
                         <ManageAllOrders></ManageAllOrders>
-                    </Route>
-                    <Route path={`${path}/manageProducts`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageProducts`}>
                         <ManageProducts></ManageProducts>
-                    </Route>
+                    </AdminRoute>
                     <Route path={`${path}/pay`}>
                         <h2>Payment Coming soon</h2>
                     </Route>

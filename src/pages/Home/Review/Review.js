@@ -15,13 +15,14 @@ const Review = () => {
     }, [])
     console.log(reviews);
     return (
-        <Container>
-            <h2>review</h2>
+        <Container sx={{ mb: 6 }}>
+            <h2 style={{ color: 'orange', marginBottom: 30, fontSize: 35 }}>Product Review</h2>
             {isLoading && <CircularProgress />}
             <Grid container spacing={2}>
                 {reviews.map(review => <Grid key={review._id} item xs={12} md={4}>
                     <Paper elevation={3}>
                         <Typography component="legend">{review.userName}</Typography>
+                        <Typography component="legend">{review.details}</Typography>
                         <Rating name="read-only" value={review.rating} readOnly />
                     </Paper>
                 </Grid>)}

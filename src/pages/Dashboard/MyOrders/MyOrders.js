@@ -22,6 +22,9 @@ const MyOrders = () => {
         if (proceed) {
             fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
                 method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                }
             })
                 .then(res => res.json())
                 .then(data => {

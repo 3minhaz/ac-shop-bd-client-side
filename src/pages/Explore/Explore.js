@@ -1,15 +1,19 @@
-import { Button, Container, Grid, Paper } from '@mui/material';
+import { Button, CircularProgress, Container, Grid, Paper } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Navigation from '../Shared/Navigation/Navigation';
 
 const Explore = () => {
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
     useEffect(() => {
         fetch('https://aqueous-citadel-84780.herokuapp.com/allProducts')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => {
+                setProducts(data)
+                setIsLoading(false)
+            })
     }, [])
 
     const handleProductBuy = id => {
@@ -18,7 +22,10 @@ const Explore = () => {
     return (
         <div>
             <Navigation></Navigation>
+
             <Container>
+                {isLoading && <CircularProgress />}
+                <h2>Lets explore products and accessories</h2>
                 <Grid sx={{ my: 2 }} container spacing={4}>
                     {
                         products.map(product => <Grid key={product._id} item xs={12} md={4}>

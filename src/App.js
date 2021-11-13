@@ -13,6 +13,7 @@ import Navigation from './pages/Shared/Navigation/Navigation';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './pages/Shared/Login/PrivateRoute/PrivateRoute';
 import PlaceOrder from './pages/ProductBuy/PlaceOrder/PlaceOrder';
+import Explore from './pages/Explore/Explore';
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/explore">
+              <Explore></Explore>
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>

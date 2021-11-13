@@ -1,3 +1,4 @@
+import { Button, TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -22,12 +23,12 @@ const AddProduct = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
-                <input placeholder='name' {...register("productName")} /> <br />
-                <input placeholder='description' {...register("description")} /> <br />
-                <input placeholder='image-Link' {...register("image")} /> <br />
-                <input type="number" placeholder='price' {...register("price")} /> <br />
-
-                <input type="submit" />
+                <TextField sx={{ width: '50%', mt: 1 }} placeholder='name' {...register("productName")} /> <br />
+                <TextField sx={{ width: '50%', mt: 1 }} placeholder='description' {...register("description")} /> <br />
+                <TextField sx={{ width: '50%', mt: 1 }} placeholder='image-Link' {...register("image")} /> <br />
+                <TextField sx={{ width: '50%', mt: 1 }} type="number" placeholder='price' {...register("price")} /> <br />
+                <Button sx={{ mt: 2, width: '50%' }} type="submit">Submit</Button>
+                {/* <input type="submit" /> */}
             </form>
         </div>
     );

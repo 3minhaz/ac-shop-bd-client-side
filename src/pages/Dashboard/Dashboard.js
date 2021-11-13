@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { positions } from '@mui/system';
 import {
     BrowserRouter as Router,
     Switch,
@@ -43,15 +44,16 @@ function ResponsiveDrawer(props) {
             <Toolbar />
             <Divider />
             {isAdmin && <Box>
-                <Link to={`${url}/makeAdmin`}>Make admin</Link> <br />
-                <Link to={`${url}/addProduct`}>Add Product</Link> <br />
-                <Link to={`${url}/manageAllOrders`}>Manage All Orders</Link> <br />
-                <Link to={`${url}/manageProducts`}>Manage Products</Link> <br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`}>Make admin</Link> <br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`}>Add Product</Link> <br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/manageAllOrders`}>Manage All Orders</Link> <br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/manageProducts`}>Manage Products</Link> <br />
+                <Button onClick={logout}>logout</Button>
             </Box>}
             {!isAdmin && <Box>
-                <Link to={`${url}/pay`}>pay</Link> <br />
-                <Link to={`${url}/myOrders`}>My Orders</Link><br />
-                <Link to={`${url}/review`}>Review</Link><br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}>pay</Link> <br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/myOrders`}>My Orders</Link><br />
+                <Link style={{ textDecoration: 'none' }} to={`${url}/review`}>Review</Link><br />
                 <Button onClick={logout}>logout</Button>
             </Box>}
 
@@ -67,6 +69,7 @@ function ResponsiveDrawer(props) {
                 position="fixed"
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    backgroundColor: 'indigo',
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
@@ -80,8 +83,8 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                    <Typography sx={{ margin: '0 auto' }} variant="h6" noWrap component="div">
+                        Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>

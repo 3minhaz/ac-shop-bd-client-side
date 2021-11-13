@@ -25,28 +25,29 @@ const Navigation = (props) => {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const nav = (
-        <div>
-            <Link style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Dashboard</Link>
-            <Link style={{ textDecoration: 'none', color: 'white' }}>Login</Link>
-        </div>
-    )
+    // const nav = (
+    //     <div>
+    //         <Link style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Dashboard</Link>
+    //         <Link style={{ textDecoration: 'none', color: 'white' }}>Login</Link>
+    //     </div>
+    // )
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar sx={{ backgroundColor: 'Navy', }} position="static">
                 <Toolbar>
-                    <IconButton
+                    {/* <IconButton
                         color="inherit"
                         aria-label="open drawer"
                         edge="start"
+
                         onClick={handleDrawerToggle}
                         sx={{ mr: 2, display: { sm: 'none' } }}
                     >
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton> */}
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
+                        AC SHOP BD
                     </Typography>
                     {/* <Drawer
                         variant="permanent"
@@ -57,12 +58,13 @@ const Navigation = (props) => {
                         }}
                 </Drawer>
                     > */}
+                    <Link to='/explore' style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Explore</Link> <br />
                     {
-                        user.email ? <Box>
-                            <Link to='/dashboard' style={{ textDecoration: 'none', color: 'white', margin: 8 }}>Dashboard</Link> <br />
-                            <p>{user.displayName}</p>
+                        user.email ? <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <Link to='/dashboard' style={{ textDecoration: 'none', color: 'white', margin: 10 }}>Dashboard</Link> <br />
+                            <p style={{ marginRight: '8px' }}> {user.displayName}</p>
                             <Button onClick={logout} variant="contained">logout</Button>
-                        </Box> :
+                        </div> :
                             <Link to='/login' style={{ textDecoration: 'none', color: 'white' }}>Login</Link>
                     }
                     <Drawer

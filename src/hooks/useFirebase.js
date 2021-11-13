@@ -54,7 +54,7 @@ const useFirebase = () => {
                 // Signed in 
                 const user = userCredential.user;
                 setUser(user)
-                const redirect_uri = location?.state?.from || '/home'
+                const redirect_uri = location?.state?.from || '/dashboard'
                 history.replace(redirect_uri)
                 // ...
             })
@@ -83,10 +83,10 @@ const useFirebase = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/users/${user.email}`)
+        fetch(`https://aqueous-citadel-84780.herokuapp.com/users/${user?.email}`)
             .then(res => res.json())
-            .then(data => setIsAdmin(data.admin))
-    }, [user.email])
+            .then(data => setIsAdmin(data?.admin))
+    }, [user?.email])
 
     const addUser = (email, name) => {
         const user = { email, displayName: name };

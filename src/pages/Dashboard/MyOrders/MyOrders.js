@@ -1,5 +1,5 @@
 import { Button, Grid, Paper, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, padding } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
@@ -43,15 +43,15 @@ const MyOrders = () => {
                                 bgcolor: 'background.paper',
                             }}
                         >
-                            <img width="50%" src={order.product.image} alt="" />
-                            <Typography variant='h5'>
+                            <img width="50%" height="100" src={order.product.image} alt="" />
+                            <Typography variant='h5' sx={{ backgroundColor: 'tomato', height: '25%', p: 1, borderRadius: '8px', color: 'white' }}>
                                 {order.status}
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'left' }} variant='h3'>
+                        <Typography sx={{ textAlign: 'left', ml: 2 }} variant='h3'>
                             {order.product.productName}
                         </Typography>
-                        <Typography sx={{ textAlign: 'left' }} display="block" variant='caption'>
+                        <Typography sx={{ textAlign: 'left', ml: 2 }} display="block" variant='caption'>
                             {order.product.description.slice(0, 90)} ......
                         </Typography>
                         <Button onClick={() => handleDeleteOrder(order._id)} variant='contained' sx={{ my: 2 }}>Delete</Button>

@@ -1,16 +1,20 @@
-import { Button, Paper, Typography } from '@mui/material';
+import { Button, CircularProgress, Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [isShipped, setIsShipped] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://aqueous-citadel-84780.herokuapp.com/allOrders')
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data)
+                setIsLoading(false)
+            })
     }, [isShipped])
     const handleShipped = id => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ status: 'shipped' })
@@ -25,7 +29,7 @@ const ManageAllOrders = () => {
     }
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -39,7 +43,8 @@ const ManageAllOrders = () => {
     return (
         <div>
             <h3>manage all orders.{orders.length}</h3>
-            {orders.map(order => <Paper sx={{ p: 1 }} elevation={3} key={order._id}>
+            {isLoading && <CircularProgress />}
+            {orders.map(order => <Paper sx={{ p: 1, m: 2 }} elevation={3} key={order._id}>
                 <Typography sx={{ mr: 2, fontSize: 18 }} variant="caption" gutterBottom xs={12}>
                     email: {order.email_add_by_user}
                 </Typography>
@@ -49,11 +54,11 @@ const ManageAllOrders = () => {
                 <Typography sx={{ mr: 2, fontSize: 18 }} variant="caption" gutterBottom>
                     Address:  {order.address}
                 </Typography>
-                <Typography sx={{ mr: 2, fontSize: 18, backgroundColor: 'red', p: 1, borderRadius: 10 }} variant="caption" gutterBottom>
-                    Status:  {order.status}
+                <Typography sx={{ mr: 2, fontSize: 18, backgroundColor: 'tomato', p: 1, borderRadius: 10 }} variant="caption" gutterBottom>
+                    Status:  <span style={{ color: 'white' }}>{order.status}</span>
                 </Typography>
-                <Button onClick={() => handleShipped(order._id)} sx={{ mr: 1, }} >Shipped</Button>
-                <Button onClick={() => handleDelete(order._id)} sx={{ mr: 1, }}>Delete</Button>
+                <Button onClick={() => handleShipped(order._id)} sx={{ mr: 1, }} variant="contained" color="success">Shipped</Button>
+                <Button onClick={() => handleDelete(order._id)} variant="outlined" color="error">Delete</Button>
             </Paper>)}
         </div>
     );

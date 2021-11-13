@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, Typography } from '@mui/material';
+import { Button, CircularProgress, Grid, Paper, Typography } from '@mui/material';
 import { Box, padding } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
@@ -7,10 +7,14 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const { user } = useAuth();
     const [isDelete, setIsDelete] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         fetch(`https://aqueous-citadel-84780.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data)
+                setIsLoading(false)
+            })
     }, [isDelete])
 
     const handleDeleteOrder = id => {
@@ -31,6 +35,7 @@ const MyOrders = () => {
 
     return (
         <div>
+            {isLoading && <CircularProgress />}
             <Grid container spacing={2}>
                 {orders.map(order => <Grid key={order._id} item xs={12} md={4}>
                     <Paper elevation={3} >

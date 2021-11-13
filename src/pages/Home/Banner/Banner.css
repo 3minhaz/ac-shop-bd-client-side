@@ -1,0 +1,10 @@
+.bg-img{
+    background-image: url('../../../images/realistic-living-room-interior-light-tones_98292-7170.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+}
+/* 
+style={{ backgroundImage: `url(${img})`, height: '100vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+*/

@@ -44,6 +44,7 @@ function ResponsiveDrawer(props) {
             <Toolbar />
             <Divider />
             {isAdmin && <Box>
+                <Link style={{ textDecoration: 'none' }} to={`/home`}>home</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`}>Make admin</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`}>Add Product</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/manageAllOrders`}>Manage All Orders</Link> <br />
@@ -51,6 +52,7 @@ function ResponsiveDrawer(props) {
                 <Button onClick={logout}>logout</Button>
             </Box>}
             {!isAdmin && <Box>
+                <Link style={{ textDecoration: 'none' }} to={`/home`}>home</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}>pay</Link> <br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/myOrders`}>My Orders</Link><br />
                 <Link style={{ textDecoration: 'none' }} to={`${url}/review`}>Review</Link><br />

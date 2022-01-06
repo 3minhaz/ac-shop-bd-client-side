@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const { user, isLoading, isAdmin } = useAuth();
+    const { user, isLoading, isAdmin, } = useAuth();
     if (isLoading) {
         return <CircularProgress></CircularProgress>
     }
@@ -17,7 +17,7 @@ const PrivateRoute = ({ children, ...rest }) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/dashboard",
+                            pathname: "/",
                             state: { from: location }
                         }}
                     />

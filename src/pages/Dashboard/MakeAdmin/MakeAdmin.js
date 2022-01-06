@@ -1,15 +1,20 @@
 import { Button, TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const { token } = useAuth();
     const onSubmit = (data, e) => {
         e.preventDefault();
-        fetch('https://aqueous-citadel-84780.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: 'PUT',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: data.email })
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'content-type': 'application/json'
+            },
+            // body: JSON.stringify({ email: data.email })
         })
             .then(res => res.json())
             .then(data => {

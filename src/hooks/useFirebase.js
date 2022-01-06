@@ -1,5 +1,5 @@
 import firebaseInitialize from "../pages/Shared/Login/Firebase/firebase.init";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, onAuthStateChanged, getIdToken } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 firebaseInitialize();
@@ -9,6 +9,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [token, setToken] = useState('');
 
     const registerWithEmail = (name, email, password, location, history) => {
         setIsLoading(true)
@@ -70,6 +71,10 @@ const useFirebase = () => {
             setIsLoading(true)
             if (user) {
                 setUser(user)
+                getIdToken(user)
+                    .then(idToken => {
+                        setToken(idToken);
+                    })
                 const uid = user.uid;
                 // ...
             } else {
@@ -106,6 +111,7 @@ const useFirebase = () => {
         user,
         isLoading,
         isAdmin,
+        token,
         registerWithEmail,
         signInUsingEmail,
         logout,

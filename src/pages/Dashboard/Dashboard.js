@@ -26,7 +26,6 @@ import ReviewOrder from './ReviewOrder/ReviewOrder';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
 import AdminRoute from '../Shared/Login/AdminRoute/AdminRoute';
-import PrivateRoute from '../Shared/Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 180;
 
@@ -58,7 +57,6 @@ function ResponsiveDrawer(props) {
                 <Link style={{ textDecoration: 'none' }} to={`${url}/review`}>Review</Link><br />
                 <Button onClick={logout}>logout</Button>
             </Box>}
-            {/* {!isAdmin && } */}
 
         </div>
     );
@@ -134,7 +132,6 @@ function ResponsiveDrawer(props) {
 
                 </Typography>
                 <Switch>
-
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
                     </AdminRoute>

@@ -14,6 +14,7 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './pages/Shared/Login/PrivateRoute/PrivateRoute';
 import PlaceOrder from './pages/ProductBuy/PlaceOrder/PlaceOrder';
 import Explore from './pages/Explore/Explore';
+import NotFound from './NotFound/NotFound';
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
             <PrivateRoute path="/placeOrder/:id">
               <PlaceOrder></PlaceOrder>
             </PrivateRoute>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>

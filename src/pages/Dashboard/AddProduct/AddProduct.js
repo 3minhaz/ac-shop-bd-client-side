@@ -6,7 +6,7 @@ const AddProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         const product = data;
-        fetch('https://aqueous-citadel-84780.herokuapp.com/addProduct', {
+        fetch('https://ac-shop-bd.onrender.com/addProduct', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(product)

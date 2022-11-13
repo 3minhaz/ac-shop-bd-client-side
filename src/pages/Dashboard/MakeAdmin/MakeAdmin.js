@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     const { token } = useAuth();
     const onSubmit = (data, e) => {
         e.preventDefault();
-        fetch('http://localhost:5000/users', {
+        fetch('https://ac-shop-bd.onrender.com/users', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,

@@ -15,7 +15,7 @@ const PlaceOrder = () => {
 
 
     useEffect(() => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/placeOrder/${id}`)
+        fetch(`https://ac-shop-bd.onrender.com/placeOrder/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
@@ -24,7 +24,7 @@ const PlaceOrder = () => {
         data.product = product;
         data.status = 'pending';
         console.log(data);
-        fetch('https://aqueous-citadel-84780.herokuapp.com/placeOrder', {
+        fetch('https://ac-shop-bd.onrender.com/placeOrder', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)

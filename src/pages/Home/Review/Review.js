@@ -6,7 +6,7 @@ const Review = () => {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('https://aqueous-citadel-84780.herokuapp.com/reviews')
+        fetch('https://ac-shop-bd.onrender.com/reviews')
             .then(res => res.json())
             .then(data => {
                 setReviews(data)

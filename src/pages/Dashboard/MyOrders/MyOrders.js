@@ -9,7 +9,7 @@ const MyOrders = () => {
     const [isDelete, setIsDelete] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/orders?email=${user.email}`)
+        fetch(`https://ac-shop-bd.onrender.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
@@ -20,7 +20,7 @@ const MyOrders = () => {
     const handleDeleteOrder = id => {
         const proceed = window.confirm('are you sure ,you want to delete the items');
         if (proceed) {
-            fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
+            fetch(`https://ac-shop-bd.onrender.com/orders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'

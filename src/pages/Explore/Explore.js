@@ -8,7 +8,7 @@ const Explore = () => {
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
     useEffect(() => {
-        fetch('https://aqueous-citadel-84780.herokuapp.com/allProducts')
+        fetch('https://ac-shop-bd.onrender.com/allProducts')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)

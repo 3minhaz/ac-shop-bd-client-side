@@ -6,7 +6,7 @@ const ManageAllOrders = () => {
     const [isShipped, setIsShipped] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('https://aqueous-citadel-84780.herokuapp.com/allOrders')
+        fetch('https://ac-shop-bd.onrender.com/allOrders')
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
@@ -14,7 +14,7 @@ const ManageAllOrders = () => {
             })
     }, [isShipped])
     const handleShipped = id => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
+        fetch(`https://ac-shop-bd.onrender.com/orders/${id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ status: 'shipped' })
@@ -31,7 +31,7 @@ const ManageAllOrders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('are you sure,you want to delete the items');
         if (proceed) {
-            fetch(`https://aqueous-citadel-84780.herokuapp.com/orders/${id}`, {
+            fetch(`https://ac-shop-bd.onrender.com/orders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

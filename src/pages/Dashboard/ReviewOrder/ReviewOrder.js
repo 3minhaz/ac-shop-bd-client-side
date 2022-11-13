@@ -8,7 +8,7 @@ const ReviewOrder = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         data.userName = user.displayName;
-        fetch('https://aqueous-citadel-84780.herokuapp.com/reviews', {
+        fetch('https://ac-shop-bd.onrender.com/reviews', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)

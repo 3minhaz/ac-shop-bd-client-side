@@ -7,7 +7,7 @@ const ManageProducts = () => {
     const [isDeleted, setIsDeleted] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('https://aqueous-citadel-84780.herokuapp.com/allProducts')
+        fetch('https://ac-shop-bd.onrender.com/allProducts')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -18,7 +18,7 @@ const ManageProducts = () => {
     const handleProductDelete = id => {
         const proceed = window.confirm('are you sure you want to delete the product');
         if (proceed) {
-            fetch(`https://aqueous-citadel-84780.herokuapp.com/products?id=${id}`, {
+            fetch(`https://ac-shop-bd.onrender.com/products?id=${id}`, {
                 method: 'DELETE',
                 headers: { 'content-type': 'application/json' }
             })

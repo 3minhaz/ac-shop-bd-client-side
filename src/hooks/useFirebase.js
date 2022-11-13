@@ -88,7 +88,7 @@ const useFirebase = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://aqueous-citadel-84780.herokuapp.com/users/${user?.email}`)
+        fetch(`https://ac-shop-bd.onrender.com/users/${user?.email}`)
             .then(res => res.json())
             .then(data => setIsAdmin(data?.admin))
     }, [user?.email])
@@ -96,7 +96,7 @@ const useFirebase = () => {
     const addUser = (email, name) => {
         const user = { email, displayName: name };
         console.log(user);
-        fetch('https://aqueous-citadel-84780.herokuapp.com/users', {
+        fetch('https://ac-shop-bd.onrender.com/users', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(user)
